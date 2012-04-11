@@ -35,7 +35,7 @@ namespace Megabyte.Web.Controls.Page {
             return Megabyte.Web.Controls.Helper.MegabyteHelper.RunMethodFromControl(c, method, parametters);
         }
 
-        public Control GetControl(Control parent, string id) {
+        public Control GetControl(Control parent, string id) { // plop2
             return Megabyte.Web.Controls.Helper.MegabyteHelper.GetControl(parent, id);
         }
 
