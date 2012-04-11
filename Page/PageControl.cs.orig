@@ -19,7 +19,11 @@ namespace Megabyte.Web.Controls.Page {
     /// TODO: Update summary.
     /// </summary>
     public class PageControl : System.Web.UI.Page, Interfaces.IWebControl {
+<<<<<<< HEAD
+        //plop3 
+=======
         //Get DB2
+>>>>>>> origin_master
         public T GetDB<T>() {
             return Megabyte.Web.Controls.Helper.MegabyteHelper.GetDB<T>();
         }
