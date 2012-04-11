@@ -1,6 +1,6 @@
 ﻿body
 {
-     background: #dedede url(../Images/bg-body.png);
+     background: #dedede url(<%=WebResource("Megabyte.Web.Controls.Images.bg-body.png")%>);
 }
 
 div.wrapper
@@ -56,7 +56,7 @@ div.wrapper
   text-shadow: 0 -1px 0 #2e7c1f;
   font-family: "HelveticaNeue-Light", "Helvetica Neue", HelveticaNeue, Arial, Helvetica, Geneva, sans-serif;
   overflow: hidden;
-  background: #389425 url(../Images/bg-headern.png) repeat-x top left;
+  background: #389425 url(<%=WebResource("Megabyte.Web.Controls.Images.bg-header.png")%>) repeat-x top left;
   border-top: solid 1px #68cc54;
   border-bottom: solid 1px #36742a;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
@@ -131,11 +131,12 @@ div.wrapper
     text-shadow: 0 1px 0 #E7E7E7;
 }
 
-.sectionTab{
-    margin: 0 auto;
-    width: 940px;
-    background: red;
+.sectionTable table{
+    margin: 10px; padding: 10px; width: auto; float: left; clear:both; background: #fff;
 }
+.sectionTable tr{ margin: 0; padding: 0 0; }
+
+.sectionTable table tr td.input{ width:230px; float:left; margin:0; padding:6px; border:1px solid #acacac; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
 
 #container
 { 

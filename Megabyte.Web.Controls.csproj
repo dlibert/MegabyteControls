@@ -112,6 +112,14 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\delete_24x24.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\bg-body.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSS\buttons.css" />
+    <EmbeddedResource Include="Images\gh-icons.png" />
+    <EmbeddedResource Include="Images\bg-button.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
