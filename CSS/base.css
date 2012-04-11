@@ -1,0 +1,111 @@
+﻿
+/* @group Reset  */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+margin : 0; padding : 0; border : 0; outline : 0; font-size : 100%; vertical-align : baseline; background : transparent; }
+body { line-height : 1; }
+ol, ul { list-style : none; }
+blockquote, q { quotes : none; }
+blockquote:before, blockquote:after, q:before, q:after { content : ''; content : none; }
+:focus { outline : 0; }
+ins { text-decoration : none; }
+del { text-decoration : line-through; }
+table { border-collapse : collapse; border-spacing : 0; }
+
+html{
+}
+
+a{
+	outline-width: 0px;
+	color: #6084d7;
+}
+
+a img { border: none; }
+
+a:link, a:active, a:visited{
+	text-decoration: none;
+}
+
+a:active{
+	color: #d20000;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+/* @end */
+
+/* @group Typography */
+   
+body
+{
+	margin: 0;
+	padding: 0;
+	color: #333;
+	font: 13px/16px "Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+/* Headings
+-------------------------------------------------------------- */
+
+h1,h2,h3,h4 { margin: 0; padding: 0; width:100%; float:left; line-height: 100%; color:#333; font-weight:normal; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; }
+
+h1{ margin:0 0 12px 0; padding:0; font-size:60px; line-height:32px; letter-spacing: normal; font-weight:bold; }
+h2{ margin:0 0 6px 0; padding:0 0 0 0; font-size: 20px; line-height: 24px; letter-spacing: normal; font-weight:normal; }		
+h3{ margin:0 0 20px 0; padding:0 0 6px 0; font-size:13px; line-height:20px; font-weight: bold; border-bottom: dotted 1px #ccc; color: #066808; }
+h4{ margin:0 0 5px 0; padding:0; font-size:12px; font-weight:bold; color: #916d3b; }
+
+
+/* Text elements
+-------------------------------------------------------------- */
+
+p           { margin: 0 0 1.5em; }
+p.last      { margin-bottom: 0px; }
+
+ul, ol      { margin:0px 1.5em 1.5em 1.5em; }
+ul          { list-style-type: circle; }
+li			{ margin-bottom:0.5em; }
+ol          { list-style-type: decimal; }
+dl          { margin: 0px 0px 1.5em 0px; }
+dl dt       { font-weight: bold; }
+dd          { margin-left: 1.5em;}
+
+abbr, 
+acronym     { border-bottom: 1px dotted #555; }
+address     { margin-top: 1.5em; font-style: italic; }
+del         { color:#555; }
+
+blockquote  { margin: 1.5em; color: #555; font-style: italic; }
+strong      { font-weight: bold; }
+em          { font-weight: normal; }
+pre,code    { margin: 1.5em 0px; white-space: pre; }
+pre,code,tt { font: 1em 'andale mono', 'monotype.com', 'lucida console', monospace; line-height: 1.5em; } 
+tt          { display: block; margin: 1.5em 0px; line-height: 1.5em; }
+
+/* Misc classes and elements
+-------------------------------------------------------------- */
+
+hr {
+  background: #eee; 
+  color: #eee;
+  clear: both; 
+  float: none; 
+  width: 100%; 
+  height: 1px;
+  margin: 10px 0px;
+  border: none; 
+}
+
+/* Clearing floats without extra markup */
+
+/*.clear { display: inline-block; } */
+.clear:after, .container:after {
+  content: "."; 
+  display: block; 
+  height: 0px; 
+  clear: both; 
+  visibility: hidden;
+}
+.clear { display: block; }
+
+/* @end */

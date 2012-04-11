@@ -1,0 +1,13 @@
+﻿.mbmenu{ margin: 0; padding: 0; width: auto; height: auto; line-height: 49px; position: relative; float: left; list-style-type: none; }
+.mbmenu li{ width: auto; float: left; margin: 0; border-right:1px solid #d2d2d2; }
+.mbmenu li h1{ padding: 0; display: block; float: left; font-size: 1px; line-height: normal; }
+.mbmenu li h1 img{ width: 36px; height:34px; }
+.mbmenu li h1 a{ padding: 6px 20px 0 0; }
+.mbmenu li h1 a:hover{ background: none; }
+.mbmenu li a{ width: auto; float: left; margin: 0; padding: 0 20px 0 20px; color: #585858; }
+.mbmenu li a:hover{ text-decoration: none; background: url(../Images/bg-header-hover.png) repeat-x top left; }
+
+.mbmenuadmin{ margin: 0; padding: 0; width: auto; height: auto; line-height: 49px; position: relative; float: right; list-style-type: none; }
+.mbmenuadmin li{ width: auto; float: left; margin: 0 0 0 2px; }
+.mbmenuadmin li#newRequest a{ padding: 8px 15px; color: #585858; background: url(../Images/bg-button-grey.png) repeat-x top left; border-radius: 3px; -moz-border-radius: 3px; border: solid 1px #b2b2b2; }
+.mbmenuadmin li#newRequest a:hover{ background: url(../Images/bg-header-hover.png) repeat-x top left; text-decoration: none; }

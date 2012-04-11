@@ -1,0 +1,18 @@
+﻿body
+{
+	font-family: Verdana, Times New Roman, Courier;
+	font-size : small;	
+}
+
+#details
+{
+    border: 1px solid #000000;
+    padding: 5px;
+    background-color: #DDDDDD;
+    margin-top : 5px;    
+}
+
+a
+{
+    margin-top: 5px;
+}

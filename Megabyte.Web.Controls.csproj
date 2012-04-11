@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4B8974EC-7DB8-4A26-93C1-404E3AFFCDCD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Megabyte.Web.Controls</RootNamespace>
+    <AssemblyName>Megabyte.Web.Controls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Web.v11.2, Version=11.2.10.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\Client\Megabyte\Workshop\Themes\Log4Net\log4net-1.2.11-bin-newkey\log4net-1.2.11\bin\net\3.5\release\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buttons\Delete\DeleteButtonControl.cs" />
+    <Compile Include="Context\WebContext.cs" />
+    <Compile Include="Context\WebDBContext.cs" />
+    <Compile Include="Helper\DXHelper.cs" />
+    <Compile Include="Helper\MegabyteHelper.cs" />
+    <Compile Include="InfoBar\InfoBarControl.cs" />
+    <Compile Include="Interfaces\IWebControl.cs" />
+    <Compile Include="Log\Log4NetConfigurator.cs" />
+    <Compile Include="Master\MasterPageControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\MenuControl.cs" />
+    <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Menu\MenuItemCollection.cs" />
+    <Compile Include="Modal\ModalControl.cs" />
+    <Compile Include="Page\PageControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\AdvancedUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSS\MBMenuStyle.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\bg-header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSS\base.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\bg-header-hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSS\style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSS\msgbox.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JScript\Modal.js">
+      <SubType>Form</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSS\modal.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CSS\error.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="JScript\InfoBar.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\loading_white_40x40.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\delete_24x24.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

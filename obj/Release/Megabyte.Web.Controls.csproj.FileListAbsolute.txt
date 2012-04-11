@@ -1,0 +1,7 @@
+C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\bin\Release\Megabyte.Web.Controls.dll
+C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\bin\Release\Megabyte.Web.Controls.pdb
+C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\bin\Release\log4net.dll
+C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\bin\Release\log4net.xml
+C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\obj\Release\ResolveAssemblyReference.cache
+C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\obj\Release\Megabyte.Web.Controls.dll
+C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\obj\Release\Megabyte.Web.Controls.pdb

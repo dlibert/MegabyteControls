@@ -1,0 +1,87 @@
+﻿.info, .success, .warning, .error, .validation 
+{
+    margin: 0 0 10px 0;
+    width: 960px;
+    height: 40px;
+    border-radius: 3px;
+    display : none;
+}
+
+.success 
+{
+    color: #1d8c00;
+    background: #c2eca0;
+    border: solid 1px #5fb51b;
+}
+
+.error 
+{
+    color: #fff;
+    background: #ff7b7b;
+    border: solid 1px #df4a4a;
+}
+/*
+.success 
+{
+    color: #006100;
+    background: #c6efce;
+    border: solid 1px #006100;
+}
+
+.error 
+{
+    color: #9c0006;
+    background: #ffc7ce;
+    border: solid 1px #9c0006;
+}
+*/
+.warning 
+{
+    color: #9c653e;
+    background: #ffeb9c;
+    border: solid 1px #9c653e;
+}
+
+.containerMsgBox
+{
+}
+
+.info p, .success p, .warning p, .error p 
+{
+	font: 13px/16px "HelveticaNeue-Light", "Helvetica Neue", HelveticaNeue, Arial, Helvetica, Geneva, sans-serif;
+	font-weight: bold;
+    text-align: left;
+    line-height: 40px;
+    padding: 0 0 0 20px;
+    margin:0;
+}
+
+.info a, .success a, .warning a, .error a 
+{
+    float: right;
+    margin: 8px;
+    line-height: 40px;
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+}
+.info a:hover, .success a:hover, .warning a:hover, .error a:hover 
+{
+    cursor: pointer;
+}
+.containerMsgBox img 
+{
+    border: none;
+}
+
+/* validation */
+.validation 
+{
+    color: #D8000C;
+    background-color: #ffdccc;
+}
+.validation ul
+{
+	padding: 0px 30px;
+	list-style: square;
+}
