@@ -1,5 +1,4 @@
-﻿
-body
+﻿body
 {
      background: #dedede url(../Images/bg-body.png);
 }
@@ -28,7 +27,6 @@ div.wrapper
   position: fixed;
   top: 0;
   left: 0;
-  z-index : 99999;
 }
 
 #topbar #titles {
@@ -47,25 +45,24 @@ div.wrapper
 
 #header
 {
-  margin: 36px 0 0 0 ;
+  margin: 36px 0 0 0;
   padding: 0;
   width: 100%;
   float: left;
   height: 49px;
-  color: #969696;
+  color: #fff;
   font-size: 13px;
   font-weight: bold;
-  text-shadow: 0 1px 0 #fff;
+  text-shadow: 0 -1px 0 #2e7c1f;
   font-family: "HelveticaNeue-Light", "Helvetica Neue", HelveticaNeue, Arial, Helvetica, Geneva, sans-serif;
   overflow: hidden;
-  background: #f1f1f1 url(../Images/bg-header.png) repeat-x top left;
-  border-top: solid 1px #fff;
-  border-bottom: solid 1px #b2b2b2;
+  background: #389425 url(../Images/bg-headern.png) repeat-x top left;
+  border-top: solid 1px #68cc54;
+  border-bottom: solid 1px #36742a;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
   position: fixed;
   top: 0;
   left: 0;
-  z-index : 99999;
 }
 
 #side
@@ -104,22 +101,6 @@ div.wrapper
     padding-left: 0;
 }
 
-.contentNav
-{
-    background: #eee;
-    margin: 10px 0;
-}
-
-.contentNav li{ margin:0; border:solid 1px #ACACAC; border-top:solid 1px #C9C9C9; border-bottom:none; list-style: none}
-.contentNav li a{ display:block; height:38px; line-height:38px; padding-left:10px; color: #6084d7; font-weight:bold; text-shadow:0 1px 0 #fff; border-top:solid 1px #F6F6F6;}
-.contentNav li a:hover{ background: #f4f4f4; text-decoration: none;}
-.contentNav li.active{ border:solid 1px #4f72c2; margin-bottom:-1px; position:relative; z-index:50}
-.contentNav li.active a{ color:#fff; background:#6084d7; text-shadow:0 -1px 0 #4f72c2; border-top:solid 1px #7ca2f8}
-.contentNav li:last-child,.contentNav li.lastChild{border-bottom:solid 1px #ACACAC}
-.contentNav li.active:last-child,.contentNav li.active.lastChild{border-bottom:solid 1px #4f72c2}
-.contentNav li:first-child,.contentNav li.firstChild{border-top:solid 1px #ACACAC}
-.contentNav li.active:first-child,.contentNav li.active.firstChild{border-top:solid 1px #4f72c2}
-
 #main
 {
     padding-right: 260px;
@@ -150,33 +131,18 @@ div.wrapper
     text-shadow: 0 1px 0 #E7E7E7;
 }
 
+.sectionTab{
+    margin: 0 auto;
+    width: 940px;
+    background: red;
+}
+
 #container
 { 
-    margin: 96px auto 0 auto;
+    margin: 106px auto 54px auto;
     padding: 0;
     width: 100%;
     height:auto;
-}
-
-div.btn-NewRequest
-{
-    margin: 20% auto;
-    padding: 10px;
-    text-align: center;
-}
-
-.btn-NewRequest a:hover
-{
-    color: #fff; background:#9dd84b; text-decoration: none;
-}
-.btn-NewRequest a
-{
-    padding: 15px 30px; color: #fff; border: solid 1px #85b44a; background: #8cca43; font-size: 14px; font-weight: bold; border-radius: 4px; -moz-border-radius: 4px;
-}
-
-.btn-NewRequest a:hover
-{
-    color: #fff; background:#9dd84b; text-decoration: none;
 }
 
 div.form{ margin-bottom: 10px; padding: 10px; width: auto; float: left; clear:both; background: #f0f0f0; }
@@ -381,16 +347,10 @@ ul.formLogin .button:hover
 	padding: 0 0 0 30px;
 }
 
-#footer{ margin: 0 auto; padding: 0; width:auto; font-size: 12px; color: #606060; text-shadow: 0 1px 0 #f9f9f9; }
-#footer a{ color: #404040; text-decoration: none; font-weight: normal; }
-#footer a:hover{ text-decoration: underline; }
-#footer span#copyright { margin:0 0 10px 0; padding:0; width:auto; float:left; }
-#footer span#copyright a{ font-weight: bold; }
-
 #top-link {
 	display: none;
 	position: fixed;
-	bottom: 10px;
+	bottom: 50px;
 	right: 10px;
 	width: 40px;
 	padding: 12px 10px 10px;
@@ -411,12 +371,28 @@ ul.formLogin .button:hover
 	background: url(../Images/top-arrow.png) no-repeat 0 3px;	
 }
 
-.txtGreen
+#footer
 {
-	color: Green;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  float: left;
+  height: 36px;
+  font-size: 11px;
+  overflow: hidden;
+  border-top: 1px solid #bbb;
+  color: #585858;
+  background: #eee url(../Images/bg-grey.png) repeat-x top left;
 }
 
-.txtRed
-{
-	color: Red;
-}
+
+#footer ul#footerNav{ margin: 0; padding: 5px 0 10px 0; width: auto; height: auto; position: relative; float: left; list-style-type: none; }
+#footer ul#footerNav li { width: auto; float: left; margin: 0; padding: 0 5px 0 0; }
+
+#footer ul#footerRightNav{ margin: 0; padding: 0 0 0 15px; width: auto; height: auto; line-height: 36px; position: relative; float: right; list-style-type: none; }
+#footer ul#footerRightNav li { width: auto; float: left; margin: 0; padding: 0 0 0 15px; }
+#footer ul#footerRightNav li a{ padding: 0; color: #585858; }
+#footer ul#footerRightNav li a:hover{ color: #111; text-decoration: none; }

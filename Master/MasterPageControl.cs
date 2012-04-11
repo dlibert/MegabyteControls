@@ -21,7 +21,8 @@ namespace Megabyte.Web.Controls.Master
         {
             Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, typeof(MasterPageControl), "link", "GLOBALBASE", "Megabyte.Web.Controls.CSS.base.css"));
             Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, typeof(MasterPageControl), "link", "GLOBALSTYLE", "Megabyte.Web.Controls.CSS.style.css"));
-            Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, typeof(MasterPageControl), "link", "MSGBOXSTYLE", "Megabyte.Web.Controls.CSS.msgbox.css"));          
+            Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, typeof(MasterPageControl), "link", "MSGBOXSTYLE", "Megabyte.Web.Controls.CSS.msgbox.css"));
+            Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, typeof(MasterPageControl), "link", "BUTTONSTYLE", "Megabyte.Web.Controls.CSS.buttons.css"));          
 
             base.OnInit(e);  
         }

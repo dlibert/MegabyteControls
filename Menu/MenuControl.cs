@@ -18,10 +18,10 @@ namespace Megabyte.Web.Controls.Menu
     using System.Text;
 
     public enum MenuOrientation
-	{
-	    Horizontal,
+    {
+        Horizontal,
         Vertical
-	}
+    }
 
     /// <summary>
     /// TODO: Update summary.
@@ -53,7 +53,7 @@ namespace Megabyte.Web.Controls.Menu
             }
         }
         public event MenuClickEventHandler OnMenuClick;
-        
+
         public MenuControl()
             : base("div")
         {
@@ -71,22 +71,31 @@ namespace Megabyte.Web.Controls.Menu
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
         protected override void RenderContents(HtmlTextWriter writer)
         {
-            CreateMenu(writer,this.MainItems.GetEnumerator(), "mbmenu","");
-            CreateMenu(writer, this.SecondItems.GetEnumerator(), "mbmenuadmin", "newRequest"); 
+            CreateMenu(writer, this.MainItems.GetEnumerator(), "mbmenu", "");
+            CreateMenu(writer, this.SecondItems.GetEnumerator(), "mbmenuadmin", "newRequest");
 
             base.RenderContents(writer);
         }
 
-        private void CreateMenu(HtmlTextWriter writer, IEnumerator<MenuItem> items, string cssclass, string liId) {
+        private void CreateMenu(HtmlTextWriter writer, IEnumerator<MenuItem> items, string cssclass, string liId)
+        {
             writer.WriteBeginTag("ul");
             writer.WriteAttribute("class", cssclass);
             writer.Write(">");
 
-            while (items.MoveNext()) {
+            string firstitemliid = "FirstItem";
+
+            while (items.MoveNext())
+            {
                 writer.WriteBeginTag("li");
 
-                if(!String.IsNullOrEmpty(liId))
+                if (!String.IsNullOrEmpty(liId))
                     writer.WriteAttribute("id", liId);
+                else if (!String.IsNullOrEmpty(firstitemliid))
+                {
+                    writer.WriteAttribute("id", firstitemliid);
+                    firstitemliid = String.Empty;
+                }
 
                 if (this.SelectedItem == items.Current)
                     writer.WriteAttribute("class", "selected");
@@ -94,15 +103,21 @@ namespace Megabyte.Web.Controls.Menu
                 writer.Write(">");
                 writer.WriteBeginTag("a");
 
-                if (!String.IsNullOrEmpty(items.Current.CssClass)) {
+                if (!String.IsNullOrEmpty(items.Current.CssClass))
+                {
                     writer.WriteAttribute("class", items.Current.CssClass);
                 }
 
-                if (OnMenuClick != null) {
+                if (OnMenuClick != null)
+                {
                     writer.WriteAttribute("href", "javascript:" + Page.ClientScript.GetPostBackEventReference(this, items.Current.Id.ToString()));
-                } else if (items.Current.OnClientClick != String.Empty) {
+                }
+                else if (items.Current.OnClientClick != String.Empty)
+                {
                     writer.WriteAttribute("href", "javascript:" + items.Current.OnClientClick);
-                } else if (items.Current.PostBackUrl != String.Empty) {
+                }
+                else if (items.Current.PostBackUrl != String.Empty)
+                {
                     writer.WriteAttribute("href", items.Current.PostBackUrl);
                 }
 
@@ -140,21 +155,23 @@ namespace Megabyte.Web.Controls.Menu
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            
+
             string ctrlname = this.Page.Request.Form["__EVENTTARGET"] ?? String.Empty;
             Control c = this.Page.FindControl(ctrlname);
 
             if (c != null && c.ID == this.ID)
             {
                 string id = this.Page.Request.Form["__EVENTARGUMENT"];
-                try {
+                try
+                {
                     this.SelectedItem = this.MainItems.GetItemById(id);
                 }
-                catch{
-                    this.SelectedItem = this.SecondItems.GetItemById(id);                    
+                catch
+                {
+                    this.SelectedItem = this.SecondItems.GetItemById(id);
                 }
-               
-                if(this.OnMenuClick != null)
+
+                if (this.OnMenuClick != null)
                     OnMenuClick(this, new MenuClickEventArgs(this.SelectedItem));
             }
         }

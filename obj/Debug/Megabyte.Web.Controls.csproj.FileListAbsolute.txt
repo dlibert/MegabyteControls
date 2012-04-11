@@ -11,3 +11,8 @@ C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte
 C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\bin\Debug\es\DevExpress.Web.v11.2.resources.dll
 C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\bin\Debug\ja\DevExpress.Web.v11.2.resources.dll
 C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\bin\Debug\ru\DevExpress.Web.v11.2.resources.dll
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\Megabyte.Web.Controls.dll
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\Megabyte.Web.Controls.pdb
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\obj\Debug\Megabyte.Web.Controls.dll
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\obj\Debug\Megabyte.Web.Controls.pdb
