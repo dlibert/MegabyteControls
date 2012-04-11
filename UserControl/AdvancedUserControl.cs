@@ -21,7 +21,7 @@ namespace Megabyte.Web.Controls.UserControl
     /// </summary>
     public class AdvancedUserControl : System.Web.UI.UserControl, Interfaces.IWebControl
     {
-        public T GetDB<T>() {
+        public T GetDB<T>() { //plop
             return Megabyte.Web.Controls.Helper.MegabyteHelper.GetDB<T>();
         }
 
