@@ -17,11 +17,6 @@ namespace Megabyte.Web.Controls.Helper {
     /// TODO: Update summary.
     /// </summary>
     public static class MegabyteHelper {
-
-        public static Page GetCurrentPage() {
-            return HttpContext.Current.Handler as Page;
-        }
-
         public static T GetDB<T>() {
             return (T)Megabyte.Web.Controls.Context.WebDBContext<T>.Instance.DB;
         }
@@ -55,11 +50,7 @@ namespace Megabyte.Web.Controls.Helper {
         }
 
         public static string UserID {
-            get {
-
-                string guid = User.ProviderUserKey.ToString() + "";
-                return guid;
-            }
+            get { return User.ProviderUserKey.ToString(); }
         }
 
         public static Guid UserGUID {

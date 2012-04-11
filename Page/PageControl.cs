@@ -19,12 +19,10 @@ namespace Megabyte.Web.Controls.Page {
     /// TODO: Update summary.
     /// </summary>
     public class PageControl : System.Web.UI.Page, Interfaces.IWebControl {
-        //Get DB2
         public T GetDB<T>() {
             return Megabyte.Web.Controls.Helper.MegabyteHelper.GetDB<T>();
         }
 
-        // Log
         public ILog Log {
             get {
                 return Web.Controls.Log.Log4NetConfigurator.log;
@@ -35,7 +33,7 @@ namespace Megabyte.Web.Controls.Page {
             return Megabyte.Web.Controls.Helper.MegabyteHelper.RunMethodFromControl(c, method, parametters);
         }
 
-        public Control GetControl(Control parent, string id) { // plop2
+        public Control GetControl(Control parent, string id) {
             return Megabyte.Web.Controls.Helper.MegabyteHelper.GetControl(parent, id);
         }
 

@@ -37,6 +37,7 @@ using System.Web.UI;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: WebResource("Megabyte.Web.Controls.CSS.base.css", "text/css")]
 [assembly: WebResource("Megabyte.Web.Controls.CSS.style.css", "text/css")]
+[assembly: WebResource("Megabyte.Web.Controls.CSS.buttons.css", "text/css")]
 [assembly: WebResource("Megabyte.Web.Controls.CSS.msgbox.css", "text/css")]
 [assembly: WebResource("Megabyte.Web.Controls.CSS.MBMenuStyle.css", "text/css")]
 [assembly: WebResource("Megabyte.Web.Controls.CSS.modal.css", "text/css")]
@@ -47,4 +48,5 @@ using System.Web.UI;
 [assembly: WebResource("Megabyte.Web.Controls.Images.bg-header-hover.png", "img/png")]
 [assembly: WebResource("Megabyte.Web.Controls.Images.close.png", "img/png")]
 [assembly: WebResource("Megabyte.Web.Controls.Images.delete_24x24.png", "img/png")]
+[assembly: WebResource("Megabyte.Web.Controls.Images.gh-icons.png", "img/png")]
 [assembly: WebResource("Megabyte.Web.Controls.Images.loading_white_40x40.gif", "img/gif")]
