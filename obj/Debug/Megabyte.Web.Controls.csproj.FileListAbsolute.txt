@@ -16,3 +16,9 @@ C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\Megabyte.Web.Con
 C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\obj\Debug\Megabyte.Web.Controls.dll
 C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\obj\Debug\Megabyte.Web.Controls.pdb
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\DevExpress.Web.v11.2.xml
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\log4net.xml
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\de\DevExpress.Web.v11.2.resources.dll
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\es\DevExpress.Web.v11.2.resources.dll
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\ja\DevExpress.Web.v11.2.resources.dll
+C:\Users\GD\Desktop\ClearSource\Megabyte.Web.Controls\bin\Debug\ru\DevExpress.Web.v11.2.resources.dll
