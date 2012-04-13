@@ -4,7 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace Megabyte.Web.Controls.Buttons.Delete {
+namespace Megabyte.Web.Controls.Buttons {
     using System.Web.UI.WebControls;
     using System.Web.UI;
     using System.Collections.Generic;
