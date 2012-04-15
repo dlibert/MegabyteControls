@@ -53,16 +53,7 @@ namespace Megabyte.Web.Controls.Modal {
         protected override void OnInit(EventArgs e) {
             Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "link", "GLOBALMODALCSS", "Megabyte.Web.Controls.CSS.modal.css"));        
             Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "script", "GLOBALMODALJS", "Megabyte.Web.Controls.JScript.Modal.js"));
-
-            StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("progressbarpath = '{0}';", Page.ClientScript.GetWebResourceUrl(this.GetType(), "Megabyte.Web.Controls.Images.loading_white_40x40.gif"));
-
-            HtmlGenericControl runtimescript= new HtmlGenericControl("script");
-            runtimescript.ID = "runtimescript";
-            runtimescript.Attributes.Add("type", "text/javascript");
-            runtimescript.InnerHtml = sb.ToString();
-            Page.Header.Controls.Add(runtimescript);
-
+            
             base.OnInit(e);            
         }
 

@@ -15,6 +15,7 @@ namespace Megabyte.Web.Controls.Buttons {
     using System.Security.Permissions;
     using System.Linq;
     using System.Text;
+    using Megabyte.Web.Controls.Helper;
 
     [
     AspNetHostingPermission(SecurityAction.Demand,
@@ -41,6 +42,7 @@ namespace Megabyte.Web.Controls.Buttons {
         public string CommandArgument { get; set; }
         public bool UseCallBack { get; set; }
         public string EndCallback { get; set; }
+        public bool DisplayCallbackProgressBar { get; set; }
         public delegate void OnSaveEventHandler(object sender, SaveEventArgs e);        
         public event OnSaveEventHandler Save;        
 
@@ -50,7 +52,7 @@ namespace Megabyte.Web.Controls.Buttons {
         }
 
         public void RaisePostBackEvent(string eventArgument) {
-            Save(this, new SaveEventArgs(eventArgument));
+            if(Save != null) Save(this, new SaveEventArgs(eventArgument));
 
         }
 
@@ -59,10 +61,15 @@ namespace Megabyte.Web.Controls.Buttons {
         }
 
         public void RaiseCallbackEvent(string eventArgument) {
-            string result = String.Empty;
-            SaveEventArgs e = new SaveEventArgs(eventArgument, result);
-            Save(this, e);
-            _callbackResult = e.Result;
+            if (Save != null)
+            {
+                string result = String.Empty;
+                SaveEventArgs e = new SaveEventArgs(eventArgument, result);
+                Save(this, e);
+                _callbackResult = e.Result;
+            }
+            else
+                _callbackResult = String.Empty;
         }
 
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
@@ -78,25 +85,29 @@ namespace Megabyte.Web.Controls.Buttons {
         private string GetScript() {
             string script = String.Empty;
             string cbref = this.Page.ClientScript.GetCallbackEventReference(this, "arg", "EndCallBackSaved_" + this.ID, "context");
-            script = @"function "+ CallbackFunctionName +@"(arg,context){
+            script = @"function "+ CallbackFunctionName + @"(arg,context){
+                    PleaseWaitRT();
                     " + cbref + @";
                 }";
 
-            script += "function EndCallBackSaved_"+ this.ID +"(result,context){" + this.EndCallback + "}";
+            script += "function EndCallBackSaved_" + this.ID + "(result,context){ UnPleaseWaitRT(); " + this.EndCallback + "}";
 
             return script;
         }
 
-        private void CreateDeleteButton(HtmlTextWriter writer) {            
+        private void CreateDeleteButton(HtmlTextWriter writer) { 
+           
             writer.WriteBeginTag("a");
             if (this.AutoPostBack)
                 writer.WriteAttribute("href", "javascript:"+ this.Page.ClientScript.GetPostBackEventReference(this, this.CommandArgument));
             if (this.UseCallBack) {                
                 writer.WriteAttribute("href", "javascript:" + CallbackFunctionName + "('"+ this.CommandArgument +"');");
             }
+
             writer.WriteLine(">");         
             writer.WriteBeginTag("img");
             writer.WriteAttribute("alt", this.ToolTip);
+            writer.WriteAttribute("border", "0");
             writer.WriteAttribute("src", Page.ClientScript.GetWebResourceUrl(this.GetType(), "Megabyte.Web.Controls.Images.save_24x24.png"));
             writer.WriteLine(" />");
             writer.WriteEndTag("a");            
@@ -104,6 +115,13 @@ namespace Megabyte.Web.Controls.Buttons {
 
         private void DefaultValues() {
             this.AutoPostBack = true;
+        }
+
+        protected override void OnLoad(EventArgs e) {        
+            if (this.Page.Header.FindControl("GLOBALMODALCSS") == null)
+                Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "link", "GLOBALMODALCSS", "Megabyte.Web.Controls.CSS.modal.css"));
+            if (this.Page.Header.FindControl("GLOBALMODALJS") == null)
+                Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "script", "GLOBALMODALJS", "Megabyte.Web.Controls.JScript.Modal.js"));
         }
 
         protected override void OnPreRender(EventArgs e) {
