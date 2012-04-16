@@ -27,10 +27,17 @@ namespace Megabyte.Web.Controls.Buttons {
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class DeleteButtonControl : WebControl {
+    public class DeleteButtonControl : WebControl, ICallbackEventHandler {
 
         public string Text { get; set; }
-        public string CallBackControlId { get; set; }
+        public string CommandArgument { get; set; }
+        public string EndCallback { get; set; }
+        public string CallbackUrl { get; set; }
+        public bool DisplayCallbackProgressBar { get; set; }
+        public bool UseRedirect { get; set; }
+        public delegate void OnDeleteEventHandler(object sender, DeleteEventArgs e);
+        public event OnDeleteEventHandler Delete;        
+
 
         public DeleteButtonControl()
             : base("div") {
@@ -47,18 +54,80 @@ namespace Megabyte.Web.Controls.Buttons {
         }
 
         private void CreateDeleteButton(HtmlTextWriter writer) {
-            DevExpress.Web.ASPxCallback.ASPxCallback cb = GetCallBack();
             writer.WriteBeginTag("a");            
-            writer.WriteAttribute("href", "javascript:var c = confirm('"+ this.Text.Replace("'","\'") +"'); if(c){ " + cb.ClientInstanceName + ".PerformCallback();}");
+            writer.WriteAttribute("href", "javascript:var c = confirm('"+ this.Text.Replace("'","\'") +"'); if(c){ " + this._callbackFunctionName + "('"+ this.CommandArgument +"'); }");
             writer.WriteLine(">");         
             writer.WriteBeginTag("img");
+            writer.WriteAttribute("alt", this.ToolTip);
             writer.WriteAttribute("src", Page.ClientScript.GetWebResourceUrl(this.GetType(), "Megabyte.Web.Controls.Images.delete_24x24.png"));
             writer.WriteLine(" />");
             writer.WriteEndTag("a");            
         }
 
-        private DevExpress.Web.ASPxCallback.ASPxCallback GetCallBack(){
-            return Helper.MegabyteHelper.GetControl(this.Page,this.CallBackControlId) as DevExpress.Web.ASPxCallback.ASPxCallback;
+        public string GetCallbackResult() {
+            return _callbackResult;
+        }
+
+        public void RaiseCallbackEvent(string eventArgument) {
+            if (Delete != null) {
+                string result = String.Empty;
+                DeleteEventArgs e = new DeleteEventArgs(eventArgument, result);
+                Delete(this, e);
+                _callbackResult = e.Result;
+            } else
+                _callbackResult = String.Empty;
+        }
+
+        protected override void OnLoad(EventArgs e) {
+            if (this.Page.Header.FindControl("GLOBALMODALCSS") == null)
+                Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "link", "GLOBALMODALCSS", "Megabyte.Web.Controls.CSS.modal.css"));
+            if (this.Page.Header.FindControl("GLOBALMODALJS") == null)
+                Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "script", "GLOBALMODALJS", "Megabyte.Web.Controls.JScript.Modal.js"));
+        }
+
+        private string GetScript() {
+            StringBuilder sb = new StringBuilder();
+            string cbref = this.Page.ClientScript.GetCallbackEventReference(this, "arg", "EndCallBackDeleted_" + this.ID, "context");
+            sb.Append("function ");
+            sb.Append(_callbackFunctionName);
+            sb.Append("(arg,context){");
+            if(DisplayCallbackProgressBar) sb.Append(" PleaseWaitRT(); ");
+            sb.Append(cbref);
+            sb.Append("}");
+            sb.Append("function EndCallBackDeleted_");
+            sb.Append(this.ID);
+            sb.Append("(result,context){ ");
+            if(DisplayCallbackProgressBar) sb.Append("UnPleaseWaitRT(); ");
+            if (!this.UseRedirect) sb.Append(this.EndCallback);
+            else { sb.Append("window.location='"); sb.Append(this.CallbackUrl); sb.Append("';"); }
+            sb.Append(" }");
+
+            return sb.ToString();
+        }
+
+        protected override void OnPreRender(EventArgs e) {
+            this._callbackFunctionName = "UseButtonDeleteCallback_" + this.ID;
+            this.script = GetScript();
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ButtonDeleteCallbackScript_" + this.ID, this.script, true);
+        }
+
+        private string _callbackFunctionName = String.Empty;
+        private string script = String.Empty;
+        private static string _callbackResult = null;   
+    }
+
+    public class DeleteEventArgs : EventArgs {
+        public string Argument { get; set; }
+        public string Result { get; set; }
+
+        public DeleteEventArgs(string arg) {
+            this.Argument = arg;
+            this.Result = String.Empty;
+        }
+
+        public DeleteEventArgs(string arg, string result) {
+            this.Argument = arg;
+            this.Result = result;
         }
     }
 }

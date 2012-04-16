@@ -16,6 +16,7 @@ namespace Megabyte.Web.Controls.Buttons {
     using System.Linq;
     using System.Text;
     using Megabyte.Web.Controls.Helper;
+using System.Drawing;
 
     [
     AspNetHostingPermission(SecurityAction.Demand,
@@ -23,7 +24,8 @@ namespace Megabyte.Web.Controls.Buttons {
     AspNetHostingPermission(SecurityAction.InheritanceDemand,
     Level = AspNetHostingPermissionLevel.Minimal),
     DefaultProperty("Tooltip"),
-    ParseChildren(true, "Tooltip"),
+    ParseChildren(true, "Tooltip"),   
+    ToolboxBitmap("save_16x16.bmp"),
     ToolboxData("<{0}:SaveButtonControl runat=server></{0}:SaveButtonControl>")]
     /// <summary>
     /// TODO: Update summary.
@@ -79,14 +81,16 @@ namespace Megabyte.Web.Controls.Buttons {
 
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
         protected override void RenderContents(HtmlTextWriter writer) {            
-            CreateDeleteButton(writer);
+            CreateSaveButton(writer);
         }
 
         private string GetScript() {
             string script = String.Empty;
             string cbref = this.Page.ClientScript.GetCallbackEventReference(this, "arg", "EndCallBackSaved_" + this.ID, "context");
-            script = @"function "+ CallbackFunctionName + @"(arg,context){
+            script = @"function "+ _callbackFunctionName + @"(arg,context){
                     PleaseWaitRT();
+                    __theFormPostData = '';
+                    WebForm_InitCallback();
                     " + cbref + @";
                 }";
 
@@ -95,13 +99,13 @@ namespace Megabyte.Web.Controls.Buttons {
             return script;
         }
 
-        private void CreateDeleteButton(HtmlTextWriter writer) { 
+        private void CreateSaveButton(HtmlTextWriter writer) { 
            
             writer.WriteBeginTag("a");
             if (this.AutoPostBack)
                 writer.WriteAttribute("href", "javascript:"+ this.Page.ClientScript.GetPostBackEventReference(this, this.CommandArgument));
             if (this.UseCallBack) {                
-                writer.WriteAttribute("href", "javascript:" + CallbackFunctionName + "('"+ this.CommandArgument +"');");
+                writer.WriteAttribute("href", "javascript:" + _callbackFunctionName + "('"+ this.CommandArgument +"');");
             }
 
             writer.WriteLine(">");         
@@ -125,12 +129,12 @@ namespace Megabyte.Web.Controls.Buttons {
         }
 
         protected override void OnPreRender(EventArgs e) {
-            this.CallbackFunctionName = "UseButtonSaveCallback_" + this.ID;
+            this._callbackFunctionName = "UseButtonSaveCallback_" + this.ID;
             this.script = GetScript();
             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ButtonSaveCallbackScript_" + this.ID, this.script, true);
         }
 
-        private string CallbackFunctionName = String.Empty;
+        private string _callbackFunctionName = String.Empty;
         private string script = String.Empty;
         private static string _callbackResult = null;        
     }
