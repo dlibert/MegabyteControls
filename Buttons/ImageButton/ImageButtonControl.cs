@@ -132,6 +132,7 @@ namespace Megabyte.Web.Controls.Buttons {
 
         private void DefaultValues() {
             this.AutoPostBack = true;
+            this.UseCallBack = false;
         }
 
         protected override void OnPreRender(EventArgs e) {
