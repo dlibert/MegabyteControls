@@ -47,6 +47,7 @@ namespace Megabyte.Web.Controls.Buttons {
         public bool AutoPostBack { get; set; }
         public string CommandArgument { get; set; }
         public bool UseCallBack { get; set; }
+        public string BeforeCallback { get; set; }
         public string EndCallback { get; set; }
         public bool DisplayCallbackProgressBar { get; set; }
         public delegate void OnSaveEventHandler(object sender, SaveEventArgs e);        
@@ -92,6 +93,7 @@ namespace Megabyte.Web.Controls.Buttons {
             string script = String.Empty;
             string cbref = this.Page.ClientScript.GetCallbackEventReference(this, "arg", "EndCallBackSaved_" + this.ID, "context");
             script = @"function "+ _callbackFunctionName + @"(arg,context){
+                    " + this.BeforeCallback + @"
                     PleaseWaitRT();
                     __theFormPostData = '';
                     WebForm_InitCallback();
