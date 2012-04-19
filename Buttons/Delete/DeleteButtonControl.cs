@@ -15,6 +15,7 @@ namespace Megabyte.Web.Controls.Buttons {
     using System.Security.Permissions;
     using System.Linq;
     using System.Text;
+    using System.Drawing;
 
     [
     AspNetHostingPermission(SecurityAction.Demand,
@@ -23,6 +24,7 @@ namespace Megabyte.Web.Controls.Buttons {
     Level = AspNetHostingPermissionLevel.Minimal),
     DefaultProperty("Text"),
     ParseChildren(true, "Text"),
+    ToolboxBitmap(@"C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\Buttons\Delete\DeleteButtonControl.bmp"),
     ToolboxData("<{0}:DeleteButtonControl runat=server></{0}:DeleteButtonControl>")]
     /// <summary>
     /// TODO: Update summary.

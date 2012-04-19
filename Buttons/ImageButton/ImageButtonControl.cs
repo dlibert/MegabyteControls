@@ -4,8 +4,6 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
-internal sealed class ResourceFinder { };
-
 namespace Megabyte.Web.Controls.Buttons {
     using System.Web.UI.WebControls;
     using System.Web.UI;
@@ -25,16 +23,15 @@ namespace Megabyte.Web.Controls.Buttons {
     Level = AspNetHostingPermissionLevel.Minimal),
     AspNetHostingPermission(SecurityAction.InheritanceDemand,
     Level = AspNetHostingPermissionLevel.Minimal),
-    DefaultProperty("Tooltip"),
-    ParseChildren(true, "Tooltip"),
-    //ToolboxBitmap(typeof(ResourceFinder), "Megabyte.Web.Controls.Buttons.SaveButtonControl.bmp"),
-    ToolboxBitmap(@"C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\Buttons\Save\SaveButtonControl.bmp"),
+    DefaultProperty("ImageURL"),
+    ParseChildren(true, "ImageURL"),
+    ToolboxBitmap(@"C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\Buttons\ImageButton\ImageButton.bmp"),
     ToolboxItem(true),
-    ToolboxData("<{0}:SaveButtonControl runat=server></{0}:SaveButtonControl>")]
+    ToolboxData("<{0}:ImageButtonControl runat=server></{0}:ImageButtonControl>")]
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class SaveButtonControl : WebControl, IPostBackEventHandler, ICallbackEventHandler {
+    public class ImageButtonControl : WebControl, IPostBackEventHandler, ICallbackEventHandler {
         
         public override string ToolTip {
             get {
@@ -44,21 +41,31 @@ namespace Megabyte.Web.Controls.Buttons {
                 base.ToolTip = value;
             }
         }
+
+        public string ImageURL { get; set; }
         public bool AutoPostBack { get; set; }
         public string CommandArgument { get; set; }
         public bool UseCallBack { get; set; }
+        public string BeforeCallback { get; set; }
         public string EndCallback { get; set; }
-        public bool DisplayCallbackProgressBar { get; set; }
-        public delegate void OnSaveEventHandler(object sender, SaveEventArgs e);        
-        public event OnSaveEventHandler Save;        
+        /// <summary>
+        /// Width in pixels
+        /// </summary>
+        public int Width { get; set; }
+        /// <summary>
+        /// Height in pixels
+        /// </summary>
+        public int Height { get; set; }
+        public delegate void OnClickImageButtonEventHandler(object sender, ImageButtonEventArgs e);        
+        public event OnClickImageButtonEventHandler Click;
 
-        public SaveButtonControl()
+        public ImageButtonControl()
             : base("div") {
                 DefaultValues();
         }
 
         public void RaisePostBackEvent(string eventArgument) {
-            if(Save != null) Save(this, new SaveEventArgs(eventArgument));
+            if (Click != null) Click(this, new ImageButtonEventArgs(eventArgument));
 
         }
 
@@ -67,11 +74,11 @@ namespace Megabyte.Web.Controls.Buttons {
         }
 
         public void RaiseCallbackEvent(string eventArgument) {
-            if (Save != null)
+            if (Click != null)
             {
                 string result = String.Empty;
-                SaveEventArgs e = new SaveEventArgs(eventArgument, result);
-                Save(this, e);
+                ImageButtonEventArgs e = new ImageButtonEventArgs(eventArgument, result);
+                Click(this, e);
                 _callbackResult = e.Result;
             }
             else
@@ -80,30 +87,32 @@ namespace Megabyte.Web.Controls.Buttons {
 
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
         protected override void AddAttributesToRender(HtmlTextWriter writer) {
+            writer.AddStyleAttribute(HtmlTextWriterStyle.Width, this.Width + "px");
+            writer.AddStyleAttribute(HtmlTextWriterStyle.Height, this.Height + "px");
             base.AddAttributesToRender(writer);
         }
 
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
-        protected override void RenderContents(HtmlTextWriter writer) {            
-            CreateSaveButton(writer);
+        protected override void RenderContents(HtmlTextWriter writer) {
+            CreateImageButton(writer);
         }
 
         private string GetScript() {
             string script = String.Empty;
-            string cbref = this.Page.ClientScript.GetCallbackEventReference(this, "arg", "EndCallBackSaved_" + this.ID, "context");
+            string cbref = this.Page.ClientScript.GetCallbackEventReference(this, "arg", "EndCallBackClicked_" + this.ID, "context");
             script = @"function "+ _callbackFunctionName + @"(arg,context){
-                    PleaseWaitRT();
+                    "+ BeforeCallback + @"
                     __theFormPostData = '';
                     WebForm_InitCallback();
                     " + cbref + @";
                 }";
 
-            script += "function EndCallBackSaved_" + this.ID + "(result,context){ UnPleaseWaitRT(); " + this.EndCallback + "}";
+            script += "function EndCallBackClicked_" + this.ID + "(result,context){ " + this.EndCallback + "}";
 
             return script;
         }
 
-        private void CreateSaveButton(HtmlTextWriter writer) { 
+        private void CreateImageButton(HtmlTextWriter writer) { 
            
             writer.WriteBeginTag("a");
             if (this.AutoPostBack)
@@ -116,20 +125,13 @@ namespace Megabyte.Web.Controls.Buttons {
             writer.WriteBeginTag("img");
             writer.WriteAttribute("alt", this.ToolTip);
             writer.WriteAttribute("border", "0");
-            writer.WriteAttribute("src", Page.ClientScript.GetWebResourceUrl(this.GetType(), "Megabyte.Web.Controls.Images.save_24x24.png"));
+            writer.WriteAttribute("src", this.ImageURL);
             writer.WriteLine(" />");
             writer.WriteEndTag("a");            
         }
 
         private void DefaultValues() {
             this.AutoPostBack = true;
-        }
-
-        protected override void OnLoad(EventArgs e) {        
-            if (this.Page.Header.FindControl("GLOBALMODALCSS") == null)
-                Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "link", "GLOBALMODALCSS", "Megabyte.Web.Controls.CSS.modal.css"));
-            if (this.Page.Header.FindControl("GLOBALMODALJS") == null)
-                Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "script", "GLOBALMODALJS", "Megabyte.Web.Controls.JScript.Modal.js"));
         }
 
         protected override void OnPreRender(EventArgs e) {
@@ -143,16 +145,16 @@ namespace Megabyte.Web.Controls.Buttons {
         private static string _callbackResult = null;        
     }
 
-    public class SaveEventArgs : EventArgs {
+    public class ImageButtonEventArgs : EventArgs {
         public string Argument { get; set; }
         public string Result { get; set; }
 
-        public SaveEventArgs(string arg) {
+        public ImageButtonEventArgs(string arg) {
             this.Argument = arg;
             this.Result = String.Empty;
         }
 
-        public SaveEventArgs(string arg, string result) {
+        public ImageButtonEventArgs(string arg, string result) {
             this.Argument = arg;
             this.Result = result;
         }
