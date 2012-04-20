@@ -1,6 +1,6 @@
 ﻿body
 {
-     background: #dedede url(<%=WebResource("Megabyte.Web.Controls.Images.bg-body.png")%>);
+     background: #eaeaea url(<%=WebResource("Megabyte.Web.Controls.Images.bg-body.png")%>);
 }
 
 div.wrapper
@@ -67,15 +67,15 @@ div.wrapper
 
 #side
 {
-    width: 250px;
-    float: right;
+    width: 240px;
+    float: left;
 }
 
 #side .section
 {
     padding-left: 9px;
     padding-right: 9px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     background-color: #E2E2E2;
 }
 
@@ -101,27 +101,45 @@ div.wrapper
     padding-left: 0;
 }
 
+.contentNav
+{
+    background: #f0f0f0;
+    margin: 10px 0;
+}
+
+.contentNav li{ margin:0; border:solid 1px #bbb; border-top:solid 1px #c9c9c9; border-bottom:none; list-style: none; font-size: 13px;}
+.contentNav li a{ display:block; height:36px; line-height:36px; padding-left:10px; color: #217bbd; font-weight:normal; text-shadow:0 1px 0 #fff; border-top:solid 1px #f7f7f7;}
+.contentNav li a:hover{ background: #f3f3f3; text-decoration: none;}
+
+.contentNav li.active { background: #f3f3f3; border-left:solid 2px #217bbd; z-index: 100; }
+.contentNav li.active a{ color: #333; font-weight:bold;}
+.contentNav li:last-child,.contentNav li.lastChild{border-bottom:solid 1px #bbb}
+.contentNav li:first-child,.contentNav li.firstChild{border-top:solid 1px #bbb}
+
 #main
 {
-    padding-right: 260px;
+    padding-left: 260px;
 }
 
 .section
 {
-    margin: 0 0 10px 0;
-    background-color: #EDEDED;
+    margin: 0 0 20px 0;
+    background-color: #f0f0f0;
     border: solid 1px #bbb;
     border-radius: 3px;
-    box-shadow: 1px 1px 2px #ccc;
+    box-shadow: 1px 1px 2px #ddd;
     overflow: hidden;
 }
 
 .sectionHd {
-    background: #e0e0e0 url(../Images/bg-section.png) repeat-x;
+    background: #e0e0e0 url(<%=WebResource("Megabyte.Web.Controls.Images.bg-section.png")%>) repeat-x;
     border-bottom: solid 1px #F1F1F1;
     height: 39px;
     border-radius: 3px 3px 0 0;
 }
+
+.sectionHd ul#sectionHdRight { margin: 0; padding: 6px 1px 0 ; width: auto; height: auto; position: relative; float: right; list-style-type: none; }
+.sectionHd ul#sectionHdRight li { margin: 0; padding: 0 5px 0 0; width: auto; float: left; }
 
 .sectionHd h2 {
     line-height: 39px;
@@ -129,18 +147,22 @@ div.wrapper
     font-weight: bold;
     font-size: 1.1em;
     text-shadow: 0 1px 0 #E7E7E7;
+    width: auto;
 }
 
-.sectionTable table{
-    margin: 10px; padding: 10px; width: auto; float: left; clear:both; background: #fff;
-}
-.sectionTable tr{ margin: 0; padding: 0 0; }
-
-.sectionTable table tr td.input{ width:230px; float:left; margin:0; padding:6px; border:1px solid #acacac; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.sectionTable{ margin: 0 auto; padding: 10px; width: auto;  clear:both; background: #f0f0f0; }
+.sectionTable .formTable{ margin: 0 auto; padding: 0; width: auto; }
+.sectionTable .formTr{ margin: 3px auto; padding: 0; width: auto; float: left; clear:both; }
+.sectionTable .label{ margin:0; padding:0 15px 0 0; line-height: 30px; width: 180px; float: left; font-size: 12px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color: #333; font-weight: bold; text-align: right; }
+.sectionTable .input{ width:230px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.sectionTable .combobox{ width:230px; height:30px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.sectionTable .textarea{ width:230px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.sectionTable .checkbox{ float:left; line-height:30px; margin:0; padding:0; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; font-weight: normal; }
+.sectionTable .input:focus, .textarea:focus, .select:focus { border:1px solid #999; }
 
 #container
 { 
-    margin: 106px auto 54px auto;
+    margin: 106px auto 44px auto;
     padding: 0;
     width: 100%;
     height:auto;
@@ -155,10 +177,10 @@ ul.form li#cancel{ padding: 24px 0 0 15px; display:inline!important; width:auto;
 ul.form li#cancel a{ color: #d20000; }
 ul.form .label{ margin:0; padding:0 15px 0 0; width: 200px; line-height: 30px; float: left; font-size: 12px; color: #333; font-weight: bold; text-align:right; }
 ul.form .label span{ font-weight: normal; }
-ul.form .input{ width:230px; float:left; margin:0; padding:6px; border:1px solid #acacac; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
-ul.form .textarea{ width:230px; float:left; margin:0; padding:6px; border:1px solid #acacac; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+ul.form .input{ width:230px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+ul.form .textarea{ width:230px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
 ul.form .checkbox{ float:left; line-height:30px; margin:0; padding:0; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; font-weight: normal; }
-ul.form .input:focus, .textarea:focus, .select:focus { border:1px solid #666; }
+ul.form .input:focus, .textarea:focus, .select:focus { border:1px solid #999; }
 /*ul.form .button
 {
     margin: 0;
@@ -231,7 +253,7 @@ ul.formLogin .button
     letter-spacing: 1px;
     font-size: 12px;
     font-family: "Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif;
-    background: #d7d7d7 url("../Images/bg-button.png") repeat-x top left;
+    background: #d7d7d7 url(<%=WebResource("Megabyte.Web.Controls.Images.bg-button.png")%>) repeat-x top left;
     border-right:1px solid #999;
     border-bottom:1px solid #999;
     border-left:1px solid #ccc;
@@ -252,7 +274,7 @@ ul.formLogin .button:hover
     border:1px solid #999;
 }
 
-.tableForm { margin: 30px auto; padding: 0;  background: #ededed; }
+.tableForm { margin: 30px auto; padding: 0;  background: #f0f0f0; }
 
 /*tableForm{ margin-bottom: 10px; padding: 10px; width: auto; float: left; clear:both; background: #E2E2E2; }*/
 
@@ -263,10 +285,10 @@ ul.formLogin .button:hover
 
 .tableForm .label{ margin: 0; font-size: 12px; color: #333; font-weight: bold; text-align:left; }
 .tableForm .label span{ font-weight: normal; }
-.tableForm .input{ width:230px; float:left; margin:0; padding:6px; border:1px solid #acacac; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
-.tableForm .textarea{ width:230px; float:left; margin:0; padding:6px; border:1px solid #acacac; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.tableForm .input{ width:230px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.tableForm .textarea{ width:230px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
 .tableForm .checkbox{ float:left; line-height:30px; margin:0; padding:0; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; font-weight: normal; }
-.tableForm .input:focus, .textarea:focus, .select:focus { border:1px solid #666; }
+.tableForm .input:focus, .textarea:focus, .select:focus { border:1px solid #999; }
 
 .cellField{ margin: 0; padding: 0; background: none; width:100%; float: left; clear: none; }
 
@@ -351,7 +373,7 @@ ul.formLogin .button:hover
 #top-link {
 	display: none;
 	position: fixed;
-	bottom: 50px;
+	bottom: 48px;
 	right: 10px;
 	width: 40px;
 	padding: 12px 10px 10px;
@@ -369,7 +391,7 @@ ul.formLogin .button:hover
 	font-weight: bold;
 	font-size: 13px;
 	text-shadow: 0px 1px 1px #000000;
-	background: url(../Images/top-arrow.png) no-repeat 0 3px;	
+	background: url(<%=WebResource("Megabyte.Web.Controls.Images.top-arrow.png")%>) no-repeat 0 3px;
 }
 
 #footer
@@ -386,7 +408,7 @@ ul.formLogin .button:hover
   overflow: hidden;
   border-top: 1px solid #bbb;
   color: #585858;
-  background: #eee url(../Images/bg-grey.png) repeat-x top left;
+  background: #eee url(<%=WebResource("Megabyte.Web.Controls.Images.bg-footer.png")%>) repeat-x top left;
 }
 
 
