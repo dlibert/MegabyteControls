@@ -44,6 +44,7 @@ using System.Web.UI;
 [assembly: WebResource("Megabyte.Web.Controls.CSS.error.css", "text/css")]
 [assembly: WebResource("Megabyte.Web.Controls.JScript.Modal.js", "text/javascript", PerformSubstitution=true)]
 [assembly: WebResource("Megabyte.Web.Controls.JScript.InfoBar.js", "text/javascript")]
+[assembly: WebResource("Megabyte.Web.Controls.JScript.Callback.js", "text/javascript")]
 [assembly: WebResource("Megabyte.Web.Controls.Images.bg-body.png", "img/png")]
 [assembly: WebResource("Megabyte.Web.Controls.Images.bg-header.png", "img/png")]
 [assembly: WebResource("Megabyte.Web.Controls.Images.bg-header-hover.png", "img/png")]
