@@ -90,19 +90,15 @@ namespace Megabyte.Web.Controls.Buttons {
         }
 
         private string GetScript() {
-            string script = String.Empty;
-            string cbref = this.Page.ClientScript.GetCallbackEventReference(this, "arg", "EndCallBackSaved_" + this.ID, "context");
-            script = @"function "+ _callbackFunctionName + @"(arg,context){
-                    " + this.BeforeCallback + @"
-                    PleaseWaitRT();
-                    __theFormPostData = '';
-                    WebForm_InitCallback();
-                    " + cbref + @";
-                }";
+            this._callbackObjectName = this.ClientID + "_CALLBACK";
+            string bfcallback = "function (){ PleaseWaitRT(); " + this.BeforeCallback + "}";
+            string endcallback = "function (result,context){ UnPleaseWaitRT(); " + this.EndCallback + "}";
+            string cbref = "function() { " + this.Page.ClientScript.GetCallbackEventReference(this, "'"+ this.CommandArgument +"'",endcallback, "null") + "}";
+            StringBuilder script = new StringBuilder();
 
-            script += "function EndCallBackSaved_" + this.ID + "(result,context){ UnPleaseWaitRT(); " + this.EndCallback + "}";
+            script.AppendFormat("var {0} = new Callback({1},{2},{3});", this._callbackObjectName, bfcallback, endcallback,cbref);
 
-            return script;
+            return script.ToString();
         }
 
         private void CreateSaveButton(HtmlTextWriter writer) { 
@@ -110,8 +106,8 @@ namespace Megabyte.Web.Controls.Buttons {
             writer.WriteBeginTag("a");
             if (this.AutoPostBack)
                 writer.WriteAttribute("href", "javascript:"+ this.Page.ClientScript.GetPostBackEventReference(this, this.CommandArgument));
-            if (this.UseCallBack) {                
-                writer.WriteAttribute("href", "javascript:" + _callbackFunctionName + "('"+ this.CommandArgument +"');");
+            if (this.UseCallBack) {
+                writer.WriteAttribute("href", "javascript:" + _callbackObjectName + ".PerformCallback();");
             }
 
             writer.WriteLine(">");         
@@ -132,15 +128,16 @@ namespace Megabyte.Web.Controls.Buttons {
                 Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "link", "GLOBALMODALCSS", "Megabyte.Web.Controls.CSS.modal.css"));
             if (this.Page.Header.FindControl("GLOBALMODALJS") == null)
                 Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "script", "GLOBALMODALJS", "Megabyte.Web.Controls.JScript.Modal.js"));
+            if (this.Page.Header.FindControl("GLOBALCALLBACKJS") == null)
+                Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "script", "GLOBALCALLBACKJS", "Megabyte.Web.Controls.JScript.Callback.js"));
         }
 
         protected override void OnPreRender(EventArgs e) {
-            this._callbackFunctionName = "UseButtonSaveCallback_" + this.ID;
             this.script = GetScript();
             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ButtonSaveCallbackScript_" + this.ID, this.script, true);
         }
 
-        private string _callbackFunctionName = String.Empty;
+        private string _callbackObjectName = String.Empty;
         private string script = String.Empty;
         private static string _callbackResult = null;        
     }
