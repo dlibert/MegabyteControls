@@ -26,6 +26,8 @@ namespace Megabyte.Web.Controls.Interfaces {
 
         void SetPropertyForEntity(object entity, string property, object value);
 
+        T GetPropertyFromEntity<T>(object entity, string property);
+
         Control GetControl(Control parent, string id);
 
         string UserName { get; }

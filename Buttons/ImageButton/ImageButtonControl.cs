@@ -26,7 +26,7 @@ namespace Megabyte.Web.Controls.Buttons {
     DefaultProperty("ImageURL"),
     ParseChildren(true, "ImageURL"),
     ToolboxBitmap(@"C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\Buttons\ImageButton\ImageButton.bmp"),
-    ToolboxItem(true),
+    //ToolboxItem(true),
     ToolboxData("<{0}:ImageButtonControl runat=server></{0}:ImageButtonControl>")]
     /// <summary>
     /// TODO: Update summary.
@@ -42,20 +42,26 @@ namespace Megabyte.Web.Controls.Buttons {
             }
         }
 
+        [Category("Megabyte Properties"), UrlProperty()]
         public string ImageURL { get; set; }
+        [Category("Megabyte Properties")]
         public bool AutoPostBack { get; set; }
+        [Category("Megabyte Properties")]
         public string CommandArgument { get; set; }
+        [Category("Megabyte Properties")]
         public bool UseCallBack { get; set; }
+        [Category("Megabyte Properties")]
         public string BeforeCallback { get; set; }
+        [Category("Megabyte Properties")]
         public string EndCallback { get; set; }
         /// <summary>
         /// Width in pixels
         /// </summary>
-        public int Width { get; set; }
+        //public int Width { get; set; }
         /// <summary>
         /// Height in pixels
         /// </summary>
-        public int Height { get; set; }
+        //public int Height { get; set; }
         public delegate void OnClickImageButtonEventHandler(object sender, ImageButtonEventArgs e);        
         public event OnClickImageButtonEventHandler Click;
 
@@ -87,8 +93,8 @@ namespace Megabyte.Web.Controls.Buttons {
 
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
         protected override void AddAttributesToRender(HtmlTextWriter writer) {
-            writer.AddStyleAttribute(HtmlTextWriterStyle.Width, this.Width + "px");
-            writer.AddStyleAttribute(HtmlTextWriterStyle.Height, this.Height + "px");
+            //writer.AddStyleAttribute(HtmlTextWriterStyle.Width, this.Width + "px");
+            //writer.AddStyleAttribute(HtmlTextWriterStyle.Height, this.Height + "px");
             base.AddAttributesToRender(writer);
         }
 
@@ -98,18 +104,15 @@ namespace Megabyte.Web.Controls.Buttons {
         }
 
         private string GetScript() {
-            string script = String.Empty;
-            string cbref = this.Page.ClientScript.GetCallbackEventReference(this, "arg", "EndCallBackClicked_" + this.ID, "context");
-            script = @"function "+ _callbackFunctionName + @"(arg,context){
-                    "+ BeforeCallback + @"
-                    __theFormPostData = '';
-                    WebForm_InitCallback();
-                    " + cbref + @";
-                }";
+            this._callbackObjectName = this.ClientID + "_CALLBACK";
+            string bfcallback = "function (){ PleaseWaitRT(); " + this.BeforeCallback + "}";
+            string endcallback = "function (result,context){ UnPleaseWaitRT(); " + this.EndCallback + "}";
+            string cbref = "function() { " + this.Page.ClientScript.GetCallbackEventReference(this, "'" + this.CommandArgument + "'", endcallback, "null") + "}";
+            StringBuilder script = new StringBuilder();
 
-            script += "function EndCallBackClicked_" + this.ID + "(result,context){ " + this.EndCallback + "}";
+            script.AppendFormat("var {0} = new Callback({1},{2},{3});", this._callbackObjectName, bfcallback, endcallback, cbref);
 
-            return script;
+            return script.ToString();
         }
 
         private void CreateImageButton(HtmlTextWriter writer) { 
@@ -117,15 +120,17 @@ namespace Megabyte.Web.Controls.Buttons {
             writer.WriteBeginTag("a");
             if (this.AutoPostBack)
                 writer.WriteAttribute("href", "javascript:"+ this.Page.ClientScript.GetPostBackEventReference(this, this.CommandArgument));
-            if (this.UseCallBack) {                
-                writer.WriteAttribute("href", "javascript:" + _callbackFunctionName + "('"+ this.CommandArgument +"');");
+            else if (this.UseCallBack) {                
+                writer.WriteAttribute("href", "javascript:" + _callbackObjectName + ".PerformCallback();");
             }
 
-            writer.WriteLine(">");         
+            writer.WriteLine(">");       
             writer.WriteBeginTag("img");
+            writer.WriteAttribute("width", this.Width.ToString());
+            writer.WriteAttribute("height", this.Height.ToString());
             writer.WriteAttribute("alt", this.ToolTip);
             writer.WriteAttribute("border", "0");
-            writer.WriteAttribute("src", this.ImageURL);
+            writer.WriteAttribute("src", this.ResolveUrl(this.ImageURL));
             writer.WriteLine(" />");
             writer.WriteEndTag("a");            
         }
@@ -133,15 +138,16 @@ namespace Megabyte.Web.Controls.Buttons {
         private void DefaultValues() {
             this.AutoPostBack = true;
             this.UseCallBack = false;
+            this.Width = Unit.Pixel(16);
+            this.Height = Unit.Pixel(16);
         }
 
         protected override void OnPreRender(EventArgs e) {
-            this._callbackFunctionName = "UseButtonSaveCallback_" + this.ID;
             this.script = GetScript();
-            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ButtonSaveCallbackScript_" + this.ID, this.script, true);
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ImageButtonCallbackScript_" + this.ID, this.script, true);
         }
 
-        private string _callbackFunctionName = String.Empty;
+        private string _callbackObjectName = String.Empty;
         private string script = String.Empty;
         private static string _callbackResult = null;        
     }

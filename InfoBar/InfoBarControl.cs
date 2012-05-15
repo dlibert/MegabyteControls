@@ -28,7 +28,9 @@ namespace Megabyte.Web.Controls.InfoBar {
         ParseChildren(true, "Text"),
         ToolboxData("<{0}:InfoBarControl runat=server></{0}:InfoBarControl>")]
     public class InfoBarControl : WebControl {
+        [Category("Megabyte Properties")]
         public string Text { get; set; }
+        [Category("Megabyte Properties")]
         private string LinkId { get { return this.ClientID + this.ClientIDSeparator + "infobarlink"; } }
 
         public InfoBarControl()

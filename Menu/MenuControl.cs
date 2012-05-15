@@ -36,10 +36,13 @@ namespace Megabyte.Web.Controls.Menu
         ToolboxData("<{0}:MenuControl runat=server></{0}:MenuControl>")]
     public class MenuControl : WebControl
     {
+        [Category("Megabyte Properties")]
         public MenuItemCollection MainItems { get; set; }
+        [Category("Megabyte Properties")]
         public MenuItemCollection SecondItems { get; set; }
+        [Category("Megabyte Properties")]
         public MenuOrientation Orientation { get; set; }
-
+        [Category("Megabyte Properties")]
         public MenuItem SelectedItem
         {
             get
@@ -52,6 +55,7 @@ namespace Megabyte.Web.Controls.Menu
                 Page.Session[_selectedItemKey] = value;
             }
         }
+
         public event MenuClickEventHandler OnMenuClick;
 
         public MenuControl()

@@ -65,6 +65,10 @@ namespace Megabyte.Web.Controls.Master
             Helper.MegabyteHelper.SetPropertyForEntity(entity, property, value);
         }
 
+        public T GetPropertyFromEntity<T>(object entity, string property) {
+            return (T) Helper.MegabyteHelper.GetPropertyFromEntity(entity, property);
+        }
+
         public DateTime? SetDate(DateTime dte) {
             return Helper.MegabyteHelper.SetDate(dte);
         }

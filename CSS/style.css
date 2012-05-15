@@ -68,7 +68,8 @@ div.wrapper
 #side
 {
     width: 240px;
-    float: left;
+    float: right;
+    margin-left:10px;
 }
 
 #side .section
@@ -150,13 +151,14 @@ div.wrapper
     width: auto;
 }
 
-.sectionTable{ margin: 0 auto; padding: 10px; width: auto;  clear:both; background: #f0f0f0; }
-.sectionTable .formTable{ margin: 0 auto; padding: 0; width: auto; }
+.sectionTable{ margin: 0 auto; padding: 0px; width: auto;  clear:both; background: #f0f0f0; }
+.sectionTable .formTable{ margin: 0 auto; padding: 0; width: 500px; }
 .sectionTable .formTr{ margin: 3px auto; padding: 0; width: auto; float: left; clear:both; }
-.sectionTable .label{ margin:0; padding:0 15px 0 0; line-height: 30px; width: 180px; float: left; font-size: 12px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color: #333; font-weight: bold; text-align: right; }
-.sectionTable .input{ width:230px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
-.sectionTable .combobox{ width:230px; height:30px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
-.sectionTable .textarea{ width:230px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.sectionTable .label{ margin:0; padding:0 15px 0 0; line-height: 30px; width: 140px; float: left; font-size: 12px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color: #333; font-weight: bold; text-align: right; }
+.sectionTable .input{ width:195px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.sectionTable .input2col{ width:545px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.sectionTable .combobox{ width:195px; height:30px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
+.sectionTable .textarea{ width:195px; float:left; margin:0; padding:6px; border:1px solid #bbb; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; color:#333; background:#fff; border-radius: 2px; -moz-border-radius: 2px; box-shadow: 1px 1px 0 #fff; }
 .sectionTable .checkbox{ float:left; line-height:30px; margin:0; padding:0; font-size: 13px; font-family:"Helvetica Neue", "Helvetica-Neue", Arial, Helvetica, Geneva, sans-serif; font-weight: normal; }
 .sectionTable .input:focus, .textarea:focus, .select:focus { border:1px solid #999; }
 

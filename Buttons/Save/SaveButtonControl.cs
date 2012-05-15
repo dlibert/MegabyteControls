@@ -29,7 +29,6 @@ namespace Megabyte.Web.Controls.Buttons {
     ParseChildren(true, "Tooltip"),
     //ToolboxBitmap(typeof(ResourceFinder), "Megabyte.Web.Controls.Buttons.SaveButtonControl.bmp"),
     ToolboxBitmap(@"C:\Users\dl\Documents\Visual Studio 2010\Projects\Megabyte.Web.Controls\Megabyte.Web.Controls\Buttons\Save\SaveButtonControl.bmp"),
-    ToolboxItem(true),
     ToolboxData("<{0}:SaveButtonControl runat=server></{0}:SaveButtonControl>")]
     /// <summary>
     /// TODO: Update summary.
@@ -44,11 +43,17 @@ namespace Megabyte.Web.Controls.Buttons {
                 base.ToolTip = value;
             }
         }
+        [Category("Megabyte Properties")]
         public bool AutoPostBack { get; set; }
+        [Category("Megabyte Properties")]
         public string CommandArgument { get; set; }
+        [Category("Megabyte Properties")]
         public bool UseCallBack { get; set; }
+        [Category("Megabyte Properties")]
         public string BeforeCallback { get; set; }
+        [Category("Megabyte Properties")]
         public string EndCallback { get; set; }
+        [Category("Megabyte Properties")]
         public bool DisplayCallbackProgressBar { get; set; }
         public delegate void OnSaveEventHandler(object sender, SaveEventArgs e);        
         public event OnSaveEventHandler Save;        
@@ -106,7 +111,7 @@ namespace Megabyte.Web.Controls.Buttons {
             writer.WriteBeginTag("a");
             if (this.AutoPostBack)
                 writer.WriteAttribute("href", "javascript:"+ this.Page.ClientScript.GetPostBackEventReference(this, this.CommandArgument));
-            if (this.UseCallBack) {
+            else if (this.UseCallBack) {
                 writer.WriteAttribute("href", "javascript:" + _callbackObjectName + ".PerformCallback();");
             }
 
@@ -128,7 +133,7 @@ namespace Megabyte.Web.Controls.Buttons {
                 Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "link", "GLOBALMODALCSS", "Megabyte.Web.Controls.CSS.modal.css"));
             if (this.Page.Header.FindControl("GLOBALMODALJS") == null)
                 Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "script", "GLOBALMODALJS", "Megabyte.Web.Controls.JScript.Modal.js"));
-            if (this.Page.Header.FindControl("GLOBALCALLBACKJS") == null)
+            if (this.Page.Header.FindControl("GLOBALCALLBACKJS") == null && this.UseCallBack)
                 Page.Header.Controls.Add(Helper.MegabyteHelper.GetGenericControl(this.Page, this.GetType(), "script", "GLOBALCALLBACKJS", "Megabyte.Web.Controls.JScript.Callback.js"));
         }
 

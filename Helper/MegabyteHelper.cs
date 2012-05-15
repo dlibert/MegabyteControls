@@ -33,6 +33,12 @@ namespace Megabyte.Web.Controls.Helper {
             pi.SetValue(entity, value, null);
         }
 
+        public static object GetPropertyFromEntity(object entity, string property) {
+            Type t = entity.GetType();
+            PropertyInfo pi = t.GetProperty(property);
+            return pi.GetValue(entity, null);
+        }
+
         public static Control GetControl(Control Root, string Id) {
             if (Root.ID == Id)
                 return Root;

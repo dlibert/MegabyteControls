@@ -28,6 +28,7 @@ namespace Megabyte.Web.Controls.Modal {
         ParseChildren(true, "Text"),
         ToolboxData("<{0}:ModalControl runat=server></{0}:ModalControl>")]
     public class ModalControl : WebControl {
+        [Category("Megabyte Properties")]
         public string Text { get; set; }
 
         public ModalControl()

@@ -57,6 +57,10 @@ namespace Megabyte.Web.Controls.Page {
             Helper.MegabyteHelper.SetPropertyForEntity(entity, property, value);
         }
 
+        public T GetPropertyFromEntity<T>(object entity, string property) {
+            return (T)Helper.MegabyteHelper.GetPropertyFromEntity(entity, property);
+        }
+
         protected void Page_Error(object sender, EventArgs e) {
             string AppPath = System.IO.Path.Combine(HttpContext.Current.Request.Url.GetLeftPart(System.UriPartial.Authority), HttpContext.Current.Request.ApplicationPath.TrimEnd(new char[] { '/' }));
             string url = (Page.Request.UrlReferrer != null) ? Page.Request.UrlReferrer.ToString() : (AppPath + System.Web.Security.FormsAuthentication.DefaultUrl);
