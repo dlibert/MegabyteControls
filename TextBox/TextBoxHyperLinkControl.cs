@@ -38,9 +38,12 @@ namespace Megabyte.Web.Controls.TextBoxes {
         public bool ReadOnly { get; set; }
         [Category("Megabyte Properties")]
         public string Text { get; set; }
+        [Category("Megabyte Properties")]
+        public string BackgroundColorReadOnly { get; set; }
 
         public TextBoxHyperLinkControl()
-            : base(HtmlTextWriterTag.Input) {            
+            : base(HtmlTextWriterTag.Input) {
+                this.BackgroundColorReadOnly = "#DDDDDD";
         }
 
         [System.Security.Permissions.PermissionSet(System.Security.Permissions.SecurityAction.Demand, Name = "FullTrust")]
@@ -53,7 +56,7 @@ namespace Megabyte.Web.Controls.TextBoxes {
             if (this.ReadOnly) {
                 writer.AddAttribute(HtmlTextWriterAttribute.Onclick, GetJSURL());
                 writer.AddAttribute(HtmlTextWriterAttribute.ReadOnly, "readonly");
-                writer.AddStyleAttribute(HtmlTextWriterStyle.BackgroundColor, "#DDDDDD");
+                writer.AddStyleAttribute(HtmlTextWriterStyle.BackgroundColor, this.BackgroundColorReadOnly);
                 writer.AddStyleAttribute(HtmlTextWriterStyle.Cursor, "pointer");
             } else writer.AddAttribute("ondblclick", GetJSURL());
 
