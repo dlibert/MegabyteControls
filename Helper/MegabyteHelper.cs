@@ -52,7 +52,7 @@ namespace Megabyte.Web.Controls.Helper {
         }
 
         public static string UserName {
-            get { return "dl";/* return (System.Web.HttpContext.Current.Handler as Page).User.Identity.Name;*/ }
+            get { return (System.Web.HttpContext.Current.Handler as Page).User.Identity.Name; }
         }
 
         public static string UserID {
