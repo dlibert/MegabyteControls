@@ -1,10 +1,9 @@
 ﻿.info, .success, .warning, .error, .validation 
 {
-    margin: 0 0 10px 0;
+    margin: 0 0 20px 0;
     width: 960px;
     height: 40px;
     border-radius: 3px;
-    display : none;
 }
 
 .success 
@@ -20,30 +19,24 @@
     background: #ff7b7b;
     border: solid 1px #df4a4a;
 }
-/*
-.success 
-{
-    color: #006100;
-    background: #c6efce;
-    border: solid 1px #006100;
-}
 
-.error 
-{
-    color: #9c0006;
-    background: #ffc7ce;
-    border: solid 1px #9c0006;
-}
-*/
 .warning 
 {
-    color: #9c653e;
-    background: #ffeb9c;
-    border: solid 1px #9c653e;
+    color: #c4a128;
+    background: #ffe57b;
+    border: solid 1px #ffd440;
+}
+
+.info 
+{
+    color: #fff;
+    background: #7bdeff;
+    border: solid 1px #4abadf;
 }
 
 .containerMsgBox
 {
+
 }
 
 .info p, .success p, .warning p, .error p 
